@@ -1,0 +1,97 @@
+
+<section class="order">
+    <div class="container order__container">
+        <div class="order__top">
+            <nav class="order__breadcrumbs breadcrumbs">
+                <div class="breadcrumbs__item">
+                    <a href="/" class="breadcrumbs__link">Главная</a>
+                </div>
+                <div class="breadcrumbs__item">
+                    <a href="cart.html" class="breadcrumbs__link">Корзина</a>
+                </div>
+                <div class="breadcrumbs__item">
+                    <a class="breadcrumbs__link">Оформление заказа</a>
+                </div>
+            </nav>
+            <h1 class="order__title">Оформление заказа</h1>
+        </div>
+
+        <form action="" method="POST" class="order__form form">
+            <div class="client">
+                <h2 class="form__title">Информация о покупателе</h2>
+                <div class="form__client">
+                    <div class="block">
+                        <h3 class="form__subtitle">Ф.И.О</h3>
+                        <input type="text" class="form__input" name="fio">
+                    </div>
+                    <div class="block">
+                        <h3 class="form__subtitle">Телефон</h3>
+                        <input type="tel" class="form__input" name="tel">                          
+                    </div>
+                    <div class="block">
+                        <h3 class="form__subtitle">E-Mail</h3>
+                        <input type="email" class="form__input" name="email">                          
+                    </div>
+                    <div class="block">
+                        <h3 class="form__subtitle">Адрес</h3>
+                        <input type="text" class="form__input" name="address">         
+                    </div>
+                        
+                </div>
+            </div>
+
+            <div class="order__delivery delivery">
+                <h2 class="form__title">Способ доставки</h2>
+                <div class="form__delivery">
+                    <div class="block">
+                        <label for="delivery-radio-1" class="form__radio-text">
+                            <input id="delivery-radio-1" type="radio" class="form__radio" name="delivery" value="mail" checked>
+                            По почте
+                        </label>
+                    </div>
+                    <div class="block">
+                        <label for="delivery-radio-2" class="form__radio-text">
+                            <input id="delivery-radio-2" type="radio" class="form__radio" name="delivery" value="courier">
+                            Курьером
+                        </label>
+                    </div>
+                </div>
+                <div class="delivery__descr">Описание
+                        
+                </div>
+
+            </div>
+
+            <div class="paysystem">
+                <h2 class="form__title">Способ оплаты</h2>
+                <div class="form__paysystem">
+                    <div class="block">
+                        <label for="pay-radio-1" class="form__radio-text">
+                            <input id="pay-radio-1" type="radio" class="form__radio" name="paysystem" value="card" checked>                            
+                            Банковской картой
+                        </label>
+                    </div>
+                    <div class="block">
+                        <label for="pay-radio-2" class="form__radio-text">
+                            <input id="pay-radio-2" type="radio" class="form__radio" name="paysystem" value="erip">
+                            ЕРИП
+                        </label>
+                    </div>
+                </div>
+                <div class="paysystem__descr">Описание
+                </div>
+            </div>
+            <div class="comment">
+                <h2 class="form__title">Комментарий к заказу</h2>
+                <textarea type="textarea" class="form__textarea" name="comment" maxlength="255" rows="20"></textarea>
+            </div>
+
+            <div class="submit">
+                <!-- <button type="submit" class="form__btn btn-reset">Оформить заказ</button> -->
+                <a href="success.html" class="form__btn btn-reset">Оформить заказ</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+@Html.PartialAsync("Footer");

@@ -1,0 +1,15 @@
+﻿@model Watch
+
+
+<div class="catalog-slider__product product">
+    <a href="/product_watches.html" class="product__link-area">
+        <div class="product__image">
+            <img src="@Model.img" alt="">
+        </div>
+        <div class="product__bottom">
+            <h2 class="product__name">@Model.name</h2>
+            <div class="product__price">@Model.price</div>
+            <button class="product__btn btn-reset">Подробнее</button>
+        </div>
+    </a>
+</div>
