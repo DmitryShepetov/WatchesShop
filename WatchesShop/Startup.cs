@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WatchesShop.Data;
 using WatchesShop.Data.Interfaces;
+using WatchesShop.Data.Model;
 using WatchesShop.Data.Repository;
 
 namespace WatchesShop
@@ -30,21 +32,34 @@ namespace WatchesShop
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(_confString.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<User, IdentityRole>(opts => {
+                opts.User.RequireUniqueEmail = true;
+                opts.Password.RequiredLength = 6;   // минимальная длина
+                opts.Password.RequireNonAlphanumeric = false;   // требуются ли не алфавитно-цифровые символы
+                opts.Password.RequireLowercase = false; // требуются ли символы в нижнем регистре
+                opts.Password.RequireUppercase = true; // требуются ли символы в верхнем регистре
+                opts.Password.RequireDigit = true; // требуются ли цифры
+            }).AddEntityFrameworkStores<AppDBContext>();
             services.AddRazorPages();
             services.AddTransient<IWatch, WatchRepository>();
             services.AddTransient<IWatchCategory, CategoryRepository>();
+            services.AddTransient<IWatchImage, WatchImageRepository>();
+            services.AddTransient<IAllOrders, OrdersRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShopCartRepository.GetCart(sp));
             services.AddControllersWithViews();
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseDeveloperExceptionPage();
             app.UseHttpsRedirection();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
@@ -52,6 +67,7 @@ namespace WatchesShop
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("categoryFilter", "Watch/{action}/{category?}", defaults: new { Controller = "Watch", action = "List" });
             });
         }
     }

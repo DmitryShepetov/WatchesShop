@@ -1,0 +1,41 @@
+﻿@model WatchListViewModel
+
+<section class="product-info">
+    <hr class="hr-primary">
+
+    <div class="container product-info__container">
+        @{ foreach (Watch watch in Model.allWatch)
+            {
+                @Html.Partial("WatchInfoTwo", watch);
+            }
+        }
+        <div class="product-info__content">
+            <div class="left">
+                <div class="product-sliders">
+                    <div class="product-slider__slider-1 slider-1">
+                        @foreach (WatchImage watchImage in Model.watchImages)
+                        {
+                            <div class="slider-1__item">
+                                <img src="@watchImage.img" alt="">
+                            </div>
+                        }
+                    </div>
+                    <div class="product-slider__slider-2 slider-2">
+                        @foreach (WatchImage watchImage in Model.watchImages)
+                        {
+                            <div class="slider-2__item">
+                                <img src="@watchImage.img" alt="">
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            @{ foreach (Watch watch in Model.allWatch)
+                {
+                    @Html.Partial("WatchInfo", watch);
+                }
+            }
+        </div>
+        
+    </div>
+</section>

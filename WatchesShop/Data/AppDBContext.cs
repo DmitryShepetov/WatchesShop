@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using WatchesShop.Data.Model;
 
 namespace WatchesShop.Data
 {
-    public class AppDBContext : DbContext
+    public class AppDBContext : IdentityDbContext<User>
     {
         public AppDBContext()
         {
@@ -18,6 +19,10 @@ namespace WatchesShop.Data
              
         }
         public DbSet<Watch> Watch { get; set; }
+        public DbSet<WatchImage> WatchImage { get; set; }
+        public DbSet<ShopCartItem> ShopCartItems { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Order> Order { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 }

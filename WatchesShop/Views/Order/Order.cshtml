@@ -1,3 +1,4 @@
+@model Order
 
 <section class="order">
     <div class="container order__container">
@@ -16,25 +17,25 @@
             <h1 class="order__title">Оформление заказа</h1>
         </div>
 
-        <form action="" method="POST" class="order__form form">
+        <form asp-action="Order" method="POST" class="order__form form">
             <div class="client">
                 <h2 class="form__title">Информация о покупателе</h2>
                 <div class="form__client">
                     <div class="block">
                         <h3 class="form__subtitle">Ф.И.О</h3>
-                        <input type="text" class="form__input" name="fio">
+                        <input asp-for="name" type="text" class="form__input" name="name">
                     </div>
                     <div class="block">
                         <h3 class="form__subtitle">Телефон</h3>
-                        <input type="tel" class="form__input" name="tel">                          
+                        <input asp-for="phone" type="tel" class="form__input" name="phone">                          
                     </div>
                     <div class="block">
                         <h3 class="form__subtitle">E-Mail</h3>
-                        <input type="email" class="form__input" name="email">                          
+                        <input asp-for="email" type="email" class="form__input" name="email">                          
                     </div>
                     <div class="block">
                         <h3 class="form__subtitle">Адрес</h3>
-                        <input type="text" class="form__input" name="address">         
+                        <input asp-for="adress" type="text" class="form__input" name="adress">         
                     </div>
                         
                 </div>
@@ -45,13 +46,13 @@
                 <div class="form__delivery">
                     <div class="block">
                         <label for="delivery-radio-1" class="form__radio-text">
-                            <input id="delivery-radio-1" type="radio" class="form__radio" name="delivery" value="mail" checked>
+                            <input asp-for="delivery" id="delivery-radio-1" type="radio" class="form__radio" name="delivery" value="mail" checked>
                             По почте
                         </label>
                     </div>
                     <div class="block">
                         <label for="delivery-radio-2" class="form__radio-text">
-                            <input id="delivery-radio-2" type="radio" class="form__radio" name="delivery" value="courier">
+                            <input asp-for="delivery" id="delivery-radio-2" type="radio" class="form__radio" name="delivery" value="courier">
                             Курьером
                         </label>
                     </div>
@@ -67,13 +68,13 @@
                 <div class="form__paysystem">
                     <div class="block">
                         <label for="pay-radio-1" class="form__radio-text">
-                            <input id="pay-radio-1" type="radio" class="form__radio" name="paysystem" value="card" checked>                            
+                            <input asp-for="payment" id="pay-radio-1" type="radio" class="form__radio" name="payment" value="card" checked>                            
                             Банковской картой
                         </label>
                     </div>
                     <div class="block">
                         <label for="pay-radio-2" class="form__radio-text">
-                            <input id="pay-radio-2" type="radio" class="form__radio" name="paysystem" value="erip">
+                            <input asp-for="payment" id="pay-radio-2" type="radio" class="form__radio" name="payment" value="erip">
                             ЕРИП
                         </label>
                     </div>
@@ -88,7 +89,7 @@
 
             <div class="submit">
                 <!-- <button type="submit" class="form__btn btn-reset">Оформить заказ</button> -->
-                <a href="success.html" class="form__btn btn-reset">Оформить заказ</a>
+                <input type="submit" class="form__btn btn-reset" placeholder="Оформить заказ"/>
             </div>
         </form>
     </div>

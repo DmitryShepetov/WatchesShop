@@ -1,7 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>5be46dfc-7231-4226-a2d9-8876b8d59555</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,12 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\cart.cshtml" />
+    <None Include="Views\ShopCart\Cart.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
-    <None Include="Views\order.cshtml" />
-    <None Include="Views\product_watches.cshtml" />
-    <None Include="Views\success.cshtml" />
-    <None Include="Views\watches.cshtml" />
+    <None Include="Views\Order\Order.cshtml" />
+    <None Include="Views\Shared\WatchInfo.cshtml" />
+    <None Include="Views\Order\Complete.cshtml" />
+    <None Include="Views\Watch\List.cshtml" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\style.min.css" />
     <None Include="wwwroot\img\next.svg" />
@@ -31,15 +33,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.14" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

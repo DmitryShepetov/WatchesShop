@@ -2,13 +2,13 @@
 
 
 <div class="catalog-slider__product product">
-    <a href="/product_watches.html" class="product__link-area">
+    <a asp-controller="Watch" asp-action="Info" asp-route-name="@Model.name" class="product__link-area">
         <div class="product__image">
             <img src="@Model.img" alt="">
         </div>
         <div class="product__bottom">
             <h2 class="product__name">@Model.name</h2>
-            <div class="product__price">@Model.price</div>
+            <div class="product__price">@Model.price BYN</div>
             <button class="product__btn btn-reset">Подробнее</button>
         </div>
     </a>

@@ -18,6 +18,7 @@ namespace WatchesShop.Data.Repository
         public IEnumerable<Watch> AllWatch => appDBContext.Watch.Include(c => c.Category);
         public IEnumerable<Watch> getFavWatch => appDBContext.Watch.Where(p => p.isFavourite).Include(c => c.Category);
         public IEnumerable<Watch> getNewWatch => appDBContext.Watch.Where(p => p.newWatch).Include(c => c.Category);
+        public IEnumerable<Watch> getSortWatch(int category) => appDBContext.Watch.Where(p => p.Category.id == category);
         public async Task<Watch> getObjectWatchAsync(int watchId) => await appDBContext.Watch.FirstOrDefaultAsync(p => p.id == watchId);
     }
 }
